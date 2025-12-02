@@ -5,6 +5,7 @@
 k create ns treinamento-ch2
 ```
 
+
 ## Criando o pod faminto
 ```bash
 k run -n treinamento-ch2 --image polinux/stress pod-faminto --dry-run=client -oyaml | k neat > pod-faminto.yaml
