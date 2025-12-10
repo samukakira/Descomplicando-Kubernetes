@@ -4,29 +4,24 @@ metadata:
   labels: # Labels do deployment
     app:  nginx-deployment # Label do deployment
   name: nginx-deployment # Nome do deployment
-  namespace: giropops # Namespace do deployment
 spec:
-  replicas: 15 # Número de pods que devem estar em execução
-  selector:
+  replicas: 1 # Número de pods que devem estar em execução
+  selector: # Seleciona os pods que devem ser atualizados
     matchLabels: # Seleciona os pods que devem ser atualizados
       app: nginx-deployment # Label do deployment 
-  strategy:
-    type: RollingUpdate # Tipo de estratégia de atualização
-    rollingUpdate:
-      maxSurge: 0 # Número máximo de pods que podem ser criados além do número desejado
-      maxUnavailable: 1 # Número máximo de pods que podem ficar indisponíveis durante a atualização
+  strategy: {}
   template:
     metadata: 
       labels:
         app: nginx-deployment
     spec:
       containers:
-      - image: nginx:1.16.0 # Imagem do container
-        name: nginx-deployment # Nome do container
+      - image: nginx:1.19.1 # Imagem do container
+        name: nginx # Nome do container
         resources: 
           limits: # Limites de recursos máximos
-            cpu: 0.9 # CPU máxima
+            cpu: 0.5 # CPU máxima
             memory: 256Mi # Memória máxima
           requests: # Recursos solicitados mínimos
-            cpu: 0.4 # CPU mínima
+            cpu: 0.25 # CPU mínima
             memory: 128Mi # Memória mínima  
